@@ -1,3 +1,10 @@
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
 const questions = [
     {
         question: "Who invented the Rubik’s Cube?",
@@ -46,17 +53,16 @@ const questions = [
     }
 ];
 
-const startScreen = document.getElementById("start-screen");
-const startBtn = document.getElementById("start-btn");
-const quizContainer = document.getElementById("quiz-container");
 const questionElement = document.getElementById("question");
 const answerBtn = document.getElementById("answer-btn");
 const nextBtn = document.getElementById("next-btn");
+const startScreen = document.getElementById("start-screen");
+const quizContainer = document.getElementById("quiz-container");
 
 let currentQuestionIndex = 0;
 let score = 0;
 
-startBtn.addEventListener("click", () => {
+document.getElementById("start-btn").addEventListener("click", function() {
     startScreen.classList.add("hide");
     quizContainer.classList.remove("hide");
     startQuiz();
@@ -75,6 +81,8 @@ function showQuestion() {
     let currentQuestion = questions[currentQuestionIndex];
     let questionNo = currentQuestionIndex + 1;
     questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
+
+    shuffleArray(currentQuestion.answers);
 
     currentQuestion.answers.forEach(answer => {
         const button = document.createElement("button");
@@ -96,7 +104,7 @@ function resetState() {
 function selectAnswer(e) {
     const selectedBtn = e.target;
     const isCorrect = selectedBtn.dataset.correct === "true";
-
+    
     if (isCorrect) {
         selectedBtn.classList.add("correct");
         score++;
@@ -131,9 +139,11 @@ function handleNextButton() {
 }
 
 nextBtn.addEventListener("click", () => {
+    resetState();
     if (currentQuestionIndex < questions.length) {
         handleNextButton();
     } else {
-        startQuiz();
+        startScreen.classList.remove("hide");
+        quizContainer.classList.add("hide");
     }
 });
