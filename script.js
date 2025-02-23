@@ -46,12 +46,21 @@ const questions = [
     }
 ];
 
+const startScreen = document.getElementById("start-screen");
+const startBtn = document.getElementById("start-btn");
+const quizContainer = document.getElementById("quiz-container");
 const questionElement = document.getElementById("question");
 const answerBtn = document.getElementById("answer-btn");
 const nextBtn = document.getElementById("next-btn");
 
 let currentQuestionIndex = 0;
 let score = 0;
+
+startBtn.addEventListener("click", () => {
+    startScreen.classList.add("hide");
+    quizContainer.classList.remove("hide");
+    startQuiz();
+});
 
 function startQuiz() {
     currentQuestionIndex = 0;
@@ -87,7 +96,7 @@ function resetState() {
 function selectAnswer(e) {
     const selectedBtn = e.target;
     const isCorrect = selectedBtn.dataset.correct === "true";
-    
+
     if (isCorrect) {
         selectedBtn.classList.add("correct");
         score++;
@@ -122,12 +131,9 @@ function handleNextButton() {
 }
 
 nextBtn.addEventListener("click", () => {
-    resetState();
     if (currentQuestionIndex < questions.length) {
         handleNextButton();
     } else {
         startQuiz();
     }
 });
-
-startQuiz();

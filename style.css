@@ -7,8 +7,41 @@
 
 body {
     background-color: #001e4d;
+    text-align: center;
+    color: white;
+    padding: 20px;
 }
 
+.hide {
+    display: none;
+}
+
+#start-screen {
+    background: white;
+    color: black;
+    width: 90%;
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+#start-btn {
+    background: #063685;
+    color: white;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-align: center;
+}
+
+#start-screen h4{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 .app {
     background: #fff;
     width: 90%;
@@ -24,18 +57,19 @@ body {
     font-weight: 600;
     border-bottom: 1px solid #222;
     padding-bottom: 30px;
-    text-align: center;
 }
-.quiz{
+
+.quiz {
     padding: 20px 0;
 }
 
-.quiz h2{
+.quiz h2 {
     font-size: 18px;
     color: #001e4d;
     font-weight: 600;
 }
-.btn{
+
+.btn {
     background: white;
     color: #222;
     font-weight: 500;
@@ -48,14 +82,16 @@ body {
     cursor: pointer;
 }
 
-.btn:hover:not([disabled]){
+.btn:hover:not([disabled]) {
     background: #222;
     color: #fff;
 }
-.btn:disabled{
+
+.btn:disabled {
     cursor: no-drop;
 }
-#next-btn{
+
+#next-btn {
     background: #001e4d;
     color: #fff;
     font-weight: 500;
@@ -68,9 +104,10 @@ body {
     display: none;
 }
 
-.correct{
+.correct {
     background: rgb(129, 218, 129);
 }
-.incorrect{
+
+.incorrect {
     background: rgb(206, 101, 101);
 }
